@@ -1,6 +1,8 @@
 from os import listdir
 from os.path import isfile, join
 from PIL import Image
+# from google.cloud import storage  # Getting module errors
+# from firebase import firebase # Getting module errors
 # Inserts image and stats in firebase
 
 # Brainstorm: This script open the images in the folder

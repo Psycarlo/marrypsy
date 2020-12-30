@@ -1,14 +1,118 @@
-# Female stats
+Note: All body categories have the -na atribute : not applicable
 
-## Skin Color
+# Female stats
 
 ## Body
 
-## Hair Size
+### Skin Color
 
-## Hair Color
+- light
+- medium
+- dark
 
-## TODO: Add
+### Body Size
+
+- small
+- medium
+- large
+
+### Body Structure
+
+- fit
+- normal
+- big
+
+### Hair Size
+
+- no
+- short
+- long
+
+### Hair Color
+
+- blonde
+- brown
+- black
+- mix
+
+### Eye Color
+
+- black
+- brown
+- blue
+- green
+- other
+
+### Legs Size
+
+- small
+- large
+
+### Boobs Size
+
+- small
+- normal
+- large
+
+### Ass Size
+
+- small
+- normal
+- large
+
+### Lips Size
+
+- small
+- normal
+- large
+
+## Outfit
+
+- naked
+- casual
+- formal
+- lingerie
+- beach
+- dress
+- alternative
+- other
+
+## Accessories
+
+### Piercings
+
+- yes
+- no
+
+### Tattoos
+
+- yes
+- no
+
+### Earrings
+
+- yes
+- no
+
+### Bracelets
+
+- yes
+- no
+
+### Necklace
+
+- yes
+- no
+
+### Braces
+
+- yes
+- no
+
+### Ring
+
+- yes
+- no
 
 # Male stats
 
