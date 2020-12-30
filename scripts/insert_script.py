@@ -9,6 +9,7 @@ CREDENTIALS_FILE = './marrypsy-config.json'
 MY_CREDENTIALS = credentials.Certificate(CREDENTIALS_FILE)
 CURRENT_FILE_NAME_FEMALE = 0
 CURRENT_FILE_NAME_MALE = 0
+IMAGES_PATH = '../content'
 
 initialize_app(MY_CREDENTIALS, {'storageBucket': 'marrypsy-34678.appspot.com'})
 
@@ -114,21 +115,6 @@ def show_image(img_path):
         print('Error (1)')
 
 
-def get_all_folder_images(folder_path):
-    return [f for f in listdir(folder_path) if isfile(join(folder_path, f)) and f.lower().endswith(('.png', '.jpg'))]
-
-
-def prompt_continue():
-    answer = input('Continue? Y/n\n> ')
-    if answer.lower() == 'n':
-        return False
-    return True
-
-
-def print_instructions():
-    pass
-
-
 def is_input_valid(user_input, number_choices):
     try:
         a = int(user_input)
@@ -137,10 +123,6 @@ def is_input_valid(user_input, number_choices):
         return True
     except ValueError:
         return False
-
-
-def clear_terminal():
-    system('cls' if name == 'nt' else 'clear')
 
 
 def prompt_and_get_stats(sex, categories={}):
@@ -180,9 +162,55 @@ def confirm_stats(stats):
     return True
 
 
+def get_all_folder_images(folder_path):
+    return [f for f in listdir(folder_path) if isfile(join(folder_path, f)) and f.lower().endswith(('.png', '.jpg'))]
+
+
+def prompt_start_or_continue(text):
+    clear_terminal()
+    answer = input('{}? Y/n\n> '.format(text))
+    if answer.lower() == 'n':
+        return False
+    return True
+
+
+def should_exit_program(bool=True):
+    if bool:
+        exit(0)
+
+
+def choose_sex():
+    print('\nWhat you want to evaluate?')
+    print(' [F]emales   [Default]')
+    print(' [M]ales ')
+    answer = input('Answer: ')
+    while answer.lower() not in 'fm':
+        answer = input('Choose f for female or m for male. Answer: ')
+    if answer == 'f':
+        return 'female'
+    return 'male'
+
+
+def print_welcome():
+    print('        [ Welcome to MarryPsy stats evaluator ]  \n\n')
+    print(' You will be looking at photos and describing what you see')
+    print('                       Ready?')
+
+
+def clear_terminal():
+    system('cls' if name == 'nt' else 'clear')
+
+
 def main():
+    clear_terminal()
+    print_welcome()
+    chosen_sex = choose_sex()
+    should_exit_program(not prompt_start_or_continue('Start'))
+    clear_terminal()
+    all_images = get_all_folder_images('{}/{}'.format(IMAGES_PATH, chosen_sex))
+    for i in all_images:
+        show_image('{}/{}/{}'.format(IMAGES_PATH, chosen_sex, i))
     # show_image('../content/female/1.jpg')
-    # print(get_all_folder_images('../content/female'))
     # add_image_to_storage('../content/female/1.jpg')
     # write_current_file_names()
     # add_image_to_storage('../content/female/1.jpg', 'female')

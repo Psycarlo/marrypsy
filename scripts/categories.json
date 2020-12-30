@@ -27,7 +27,7 @@
         "braces": ["yes", "no"],
         "ring": ["yes", "no"],
         "handbag": ["yes", "no"],
-        "hat": ["yes", "no"],
+        "hat": ["yes", "no"]
       }
     },
     "male": {}
