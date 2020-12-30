@@ -6,6 +6,8 @@
 ## Libraries
 
 - Pillow
-- firebase
 - firebase-admin
-- google-cloud-storage
+
+# TODO's
+
+- [ ] Setup pipenv & requirements

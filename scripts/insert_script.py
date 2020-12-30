@@ -1,14 +1,17 @@
-from os import listdir
+from os import listdir, remove
 from os.path import isfile, join
 from PIL import Image
 
-from firebase_admin import credentials, initialize_app, storage
+from firebase_admin import credentials, initialize_app, storage, firestore
 
-MY_CREDENTIALS = credentials.Certificate('./marrypsy-34678-36070f2f84cb.json')
+CREDENTIALS_FILE = './marrypsy-config.json'
+MY_CREDENTIALS = credentials.Certificate(CREDENTIALS_FILE)
 CURRENT_FILE_NAME_FEMALE = 0
 CURRENT_FILE_NAME_MALE = 0
 
 initialize_app(MY_CREDENTIALS, {'storageBucket': 'marrypsy-34678.appspot.com'})
+
+db = firestore.client()
 
 # from google.cloud import storage  # Getting module errors
 # from firebase import firebase # Getting module errors
@@ -76,8 +79,20 @@ def add_image_to_storage(img_path, sex):
     increment_current_file_name(sex)
 
 
+def add_stats_to_db(sex, stats):
+    global db
+
+    # TODO
+    doc_ref = db.collection(u'users').document(u'alovelace')
+    doc_ref.set({
+        u'first': u'Ada',
+        u'last': u'Lovelace',
+        u'born': 1815
+    })
+
+
 def delete_image(img_path):
-    pass
+    remove(img_path)
 
 
 def show_image(img_path):
@@ -92,13 +107,22 @@ def get_all_folder_images(folder_path):
     return [f for f in listdir(folder_path) if isfile(join(folder_path, f)) and f.lower().endswith(('.png', '.jpg'))]
 
 
+def prompt_continue():
+    answer = input('Continue? Y/n\n> ')
+    if answer.lower() == 'n':
+        return False
+    return True
+
+
 def main():
     # show_image('../content/female/1.jpg')
     print(get_all_folder_images('../content/female'))
     # add_image_to_storage('../content/female/1.jpg')
     # write_current_file_names()
     # add_image_to_storage('../content/female/1.jpg', 'female')
-    get_current_file_names()
+    # get_current_file_names()
+    # delete_image('../content/female/4.jpg')
+    print(prompt_continue())
 
 
 if __name__ == '__main__':

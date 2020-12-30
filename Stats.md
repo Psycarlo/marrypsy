@@ -33,6 +33,7 @@ Note: All body categories have the -na atribute : not applicable
 - blonde
 - brown
 - black
+- redhead
 - mix
 
 ### Eye Color

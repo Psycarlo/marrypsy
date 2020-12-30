@@ -6,7 +6,7 @@
         "bodysize": ["small", "medium", "large"],
         "bodystructure": ["fit", "normal", "big"],
         "hairsize": ["no", "short", "long"],
-        "haircolor": ["blonde", "brown", "black", "mix"],
+        "haircolor": ["blonde", "brown", "black", "redhead", "mix"],
         "eyecolor": ["black", "brown", "blue", "green", "other"],
         "legssize": ["short", "long"],
         "boobssize": ["small", "normal", "large"],
