@@ -1,6 +1,7 @@
-from os import listdir, remove
+from os import listdir, remove, system, name
 from os.path import isfile, join
 from PIL import Image
+import json
 
 from firebase_admin import credentials, initialize_app, storage, firestore
 
@@ -26,12 +27,22 @@ db = firestore.client()
 # marrypsy-34678.appspot.com
 
 
+def get_json_file_data(file_path):
+    with open(file_path, "r") as f:
+        return json.loads(f.read())
+
+
 def get_current_file_names():
     with open("currentFileName.txt", "r+") as f:
         lines = f.readlines()
         for l in lines:
             s, n = l.strip().split(' ')
             set_current_file_name(s, n)
+
+
+def sync_file_name(sex):
+    # Get last file number from firebase and sync if needed
+    pass
 
 
 def write_current_file_names():
@@ -114,15 +125,63 @@ def prompt_continue():
     return True
 
 
+def print_instructions():
+    pass
+
+
+def is_input_valid(user_input, number_choices):
+    try:
+        a = int(user_input)
+        if a < 1 or a > number_choices:
+            return False
+        return True
+    except ValueError:
+        return False
+
+
+def clear_terminal():
+    system('cls' if name == 'nt' else 'clear')
+
+
+def prompt_and_get_stats(sex, categories={}):
+    res = {}
+    print('Input the stats for this {}\n'.format(sex))
+    input('Hit [ENTER] to start >')
+    clear_terminal()
+    for outer in categories.keys():
+        for inner in categories[outer].keys():
+            print('[{}]\n'.format(outer.upper()))
+            print('[?] {}:'.format(inner.capitalize()))
+            counter = 1
+            for choice in categories[outer][inner]:
+                print(' {}) {}'.format(counter, choice.capitalize()))
+                counter += 1
+            user_answer = input('Answer: ')
+            while not is_input_valid(user_answer, len(categories[outer][inner])):
+                user_answer = input('[!] Error, try again: Awnser: ')
+            if outer not in res.keys():
+                res[outer] = {}
+            res[outer][inner] = categories[outer][inner][int(
+                user_answer) - 1]
+            clear_terminal()
+    res["sex"] = sex
+    res["imgName"] = get_current_file_name(sex)
+    return res
+
+
 def main():
     # show_image('../content/female/1.jpg')
-    print(get_all_folder_images('../content/female'))
+    # print(get_all_folder_images('../content/female'))
     # add_image_to_storage('../content/female/1.jpg')
     # write_current_file_names()
     # add_image_to_storage('../content/female/1.jpg', 'female')
     # get_current_file_names()
     # delete_image('../content/female/4.jpg')
-    print(prompt_continue())
+    # print(prompt_continue())
+    # print(get_json_file_data('categories.json')['categories']['female'].keys())
+    print(prompt_and_get_stats('female', get_json_file_data(
+        'categories.json')['categories']['female']))
+    # print(is_input_valid('4', 3))
 
 
 if __name__ == '__main__':

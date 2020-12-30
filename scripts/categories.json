@@ -8,7 +8,7 @@
         "hairsize": ["no", "short", "long"],
         "haircolor": ["blonde", "brown", "black", "redhead", "mix"],
         "eyecolor": ["black", "brown", "blue", "green", "other"],
-        "legssize": ["short", "long"],
+        "legssize": ["short", "normal", "long"],
         "boobssize": ["small", "normal", "large"],
         "asssize": ["small", "normal", "large"],
         "lipssize": ["small", "normal", "large"]

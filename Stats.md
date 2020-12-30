@@ -47,6 +47,7 @@ Note: All body categories have the -na atribute : not applicable
 ### Legs Size
 
 - short
+- normal
 - long
 
 ### Boobs Size
