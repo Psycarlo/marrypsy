@@ -45,8 +45,8 @@ Note: All body categories have the -na atribute : not applicable
 
 ### Legs Size
 
-- small
-- large
+- short
+- long
 
 ### Boobs Size
 
@@ -68,16 +68,33 @@ Note: All body categories have the -na atribute : not applicable
 
 ## Outfit
 
+### Clothing
+
 - naked
 - casual
 - formal
+- sports
 - lingerie
 - beach
 - dress
 - alternative
 - other
 
+### Shoes
+
+- naked
+- heels
+- boots
+- casual
+- sports
+- other
+
 ## Accessories
+
+### Glasses
+
+- yes
+- no
 
 ### Piercings
 
@@ -110,6 +127,11 @@ Note: All body categories have the -na atribute : not applicable
 - no
 
 ### Ring
+
+- yes
+- no
+
+### Handbag
 
 - yes
 - no

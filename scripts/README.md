@@ -7,4 +7,5 @@
 
 - Pillow
 - firebase
+- firebase-admin
 - google-cloud-storage

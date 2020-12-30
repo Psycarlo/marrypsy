@@ -1,1 +1,34 @@
-// TODO: Female and Male categories
+{
+  "categories": {
+    "female": {
+      "body": {
+        "skincolor": ["fair", "medium", "dark"],
+        "bodysize": ["small", "medium", "large"],
+        "bodystructure": ["fit", "normal", "big"],
+        "hairsize": ["no", "short", "long"],
+        "haircolor": ["blonde", "brown", "black", "mix"],
+        "eyecolor": ["black", "brown", "blue", "green", "other"],
+        "legssize": ["short", "long"],
+        "boobssize": ["small", "normal", "large"],
+        "asssize": ["small", "normal", "large"],
+        "lipssize": ["small", "normal", "large"]
+      },
+      "outfit": {
+        "clothing": ["naked", "casual", "formal", "sports", "lingerie", "beach", "dress", "alternative", "other"],
+        "shoes": ["naked", "heels", "boots", "casual", "sports", "other"]
+      },
+      "accessories": {
+        "glasses": ["yes", "no"],
+        "piercings": ["yes", "no"],
+        "tattoos": ["yes", "no"],
+        "earrings": ["yes", "no"],
+        "bracelets": ["yes", "no"],
+        "necklace": ["yes", "no"],
+        "braces": ["yes", "no"],
+        "ring": ["yes", "no"],
+        "handbag": ["yes", "no"]
+      }
+    },
+    "male": {}
+  }
+}
