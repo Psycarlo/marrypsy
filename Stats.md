@@ -1,4 +1,4 @@
-Note: All body categories have the -na atribute : not applicable
+Note: All photos must be full body
 
 # Female stats
 
@@ -80,6 +80,7 @@ Note: All body categories have the -na atribute : not applicable
 - beach
 - dress
 - alternative
+- mix
 - other
 
 ### Shoes
@@ -134,6 +135,11 @@ Note: All body categories have the -na atribute : not applicable
 - no
 
 ### Handbag
+
+- yes
+- no
+
+### Hats
 
 - yes
 - no

@@ -150,7 +150,7 @@ def prompt_and_get_stats(sex, categories={}):
     clear_terminal()
     for outer in categories.keys():
         for inner in categories[outer].keys():
-            print('[{}]\n'.format(outer.upper()))
+            print('[ {} ]\n'.format(outer.upper()))
             print('[?] {}:'.format(inner.capitalize()))
             counter = 1
             for choice in categories[outer][inner]:
@@ -169,6 +169,17 @@ def prompt_and_get_stats(sex, categories={}):
     return res
 
 
+def confirm_stats(stats):
+    clear_terminal()
+    print('[ CONFIRMATION ]\n')
+    print(json.dumps(stats, indent=2))
+
+    confirmation = input('Save? Y/n ')
+    if confirmation.lower() == 'n':
+        return False
+    return True
+
+
 def main():
     # show_image('../content/female/1.jpg')
     # print(get_all_folder_images('../content/female'))
@@ -179,8 +190,10 @@ def main():
     # delete_image('../content/female/4.jpg')
     # print(prompt_continue())
     # print(get_json_file_data('categories.json')['categories']['female'].keys())
-    print(prompt_and_get_stats('female', get_json_file_data(
-        'categories.json')['categories']['female']))
+    # print(prompt_and_get_stats('female', get_json_file_data(
+    #    'categories.json')['categories']['female']))
+    # confirm_stats(prompt_and_get_stats('female', get_json_file_data(
+    #    'categories.json')['categories']['female']))
     # print(is_input_valid('4', 3))
 
 

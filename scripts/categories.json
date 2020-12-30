@@ -14,7 +14,7 @@
         "lipssize": ["small", "normal", "large"]
       },
       "outfit": {
-        "clothing": ["naked", "casual", "formal", "sports", "lingerie", "beach", "dress", "alternative", "other"],
+        "clothing": ["naked", "casual", "formal", "sports", "lingerie", "beach", "dress", "alternative", "mix", "other"],
         "shoes": ["naked", "heels", "boots", "casual", "sports", "other"]
       },
       "accessories": {
@@ -26,7 +26,8 @@
         "necklace": ["yes", "no"],
         "braces": ["yes", "no"],
         "ring": ["yes", "no"],
-        "handbag": ["yes", "no"]
+        "handbag": ["yes", "no"],
+        "hat": ["yes", "no"],
       }
     },
     "male": {}
