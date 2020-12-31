@@ -15,18 +15,6 @@ initialize_app(MY_CREDENTIALS, {'storageBucket': 'marrypsy-34678.appspot.com'})
 
 db = firestore.client()
 
-# from google.cloud import storage  # Getting module errors
-# from firebase import firebase # Getting module errors
-# Inserts image and stats in firebase
-
-# Brainstorm: This script open the images in the folder
-# one by one. After user closes the image, the program ask
-# the user about the images stats. Stats are hardcoded - meaning
-# that the user will pick one for each category.
-# After that, the user will be prompt to review and submit.
-
-# marrypsy-34678.appspot.com
-
 
 def get_json_file_data(file_path):
     with open(file_path, "r") as f:
@@ -104,6 +92,7 @@ def add_stats_to_db(sex, stats):
 
 
 def add_data_to_firebase(img_path, sex, stats):
+    print('Saving data...')
     add_image_to_storage(img_path, sex)
     add_stats_to_db(sex, stats)
     increment_current_file_name(sex)
@@ -219,7 +208,8 @@ def main():
     clear_terminal()
     all_images = get_all_folder_images('{}/{}'.format(IMAGES_PATH, chosen_sex))
     for i in all_images:
-        show_image('{}/{}/{}'.format(IMAGES_PATH, chosen_sex, i))
+        i_path = '{}/{}/{}'.format(IMAGES_PATH, chosen_sex, i)
+        show_image(i_path)
         stats = None
         confirmed = False
         was_canceled = False
@@ -232,7 +222,7 @@ def main():
             confirmed = confirm_save_stats(stats)
             if confirmed == False:
                 was_canceled = True
-        # TODO: do after confirmed logic
+        add_data_to_firebase(i_path, chosen_sex, stats)  # TODO: more logic?
         # TODO: delete image?
         should_exit_program(not prompt_start_or_continue('Continue'))
 
