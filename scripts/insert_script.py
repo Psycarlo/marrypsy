@@ -43,6 +43,7 @@ def get_current_file_names():
 
 def sync_file_name(sex):
     # Get last file number from firebase and sync if needed
+    # To share this script with others, the sync must happen
     pass
 
 
@@ -88,7 +89,6 @@ def add_image_to_storage(img_path, sex):
         '{}/{}'.format(sex, current_file_name))
     blob.upload_from_filename(img_path)
     blob.make_public()
-    increment_current_file_name(sex)
 
 
 def add_stats_to_db(sex, stats):
@@ -103,6 +103,12 @@ def add_stats_to_db(sex, stats):
     })
 
 
+def add_data_to_firebase(img_path, sex, stats):
+    add_image_to_storage(img_path, sex)
+    add_stats_to_db(sex, stats)
+    increment_current_file_name(sex)
+
+
 def delete_image(img_path):
     remove(img_path)
 
@@ -110,6 +116,7 @@ def delete_image(img_path):
 def show_image(img_path):
     try:
         img = Image.open(img_path)
+        print('< Opening image: {} >\n'.format(img_path.split('/')[-1]))
         img.show()
     except IOError:
         print('Error (1)')
@@ -127,7 +134,7 @@ def is_input_valid(user_input, number_choices):
 
 def prompt_and_get_stats(sex, categories={}):
     res = {}
-    print('Input the stats for this {}\n'.format(sex))
+    print('Pick the stats for this {}\n'.format(sex))
     input('Hit [ENTER] to start >')
     clear_terminal()
     for outer in categories.keys():
@@ -151,7 +158,7 @@ def prompt_and_get_stats(sex, categories={}):
     return res
 
 
-def confirm_stats(stats):
+def confirm_save_stats(stats):
     clear_terminal()
     print('[ CONFIRMATION ]\n')
     print(json.dumps(stats, indent=2))
@@ -178,6 +185,7 @@ def prompt_start_or_continue(text):
 
 def should_exit_program(bool=True):
     if bool:
+        write_current_file_names()
         exit(0)
 
 
@@ -212,23 +220,21 @@ def main():
     all_images = get_all_folder_images('{}/{}'.format(IMAGES_PATH, chosen_sex))
     for i in all_images:
         show_image('{}/{}/{}'.format(IMAGES_PATH, chosen_sex, i))
-        confirm_stats(prompt_and_get_stats(chosen_sex, get_json_file_data(
-            'categories.json')['categories'][chosen_sex]))
+        stats = None
+        confirmed = False
+        was_canceled = False
+        while not confirmed:
+            if was_canceled:
+                should_exit_program(
+                    not prompt_start_or_continue('You denied the confirmation...\nDo it again?'))
+            stats = prompt_and_get_stats(chosen_sex, get_json_file_data(
+                'categories.json')['categories'][chosen_sex])
+            confirmed = confirm_save_stats(stats)
+            if confirmed == False:
+                was_canceled = True
+        # TODO: do after confirmed logic
+        # TODO: delete image?
         should_exit_program(not prompt_start_or_continue('Continue'))
-
-    # show_image('../content/female/1.jpg')
-    # add_image_to_storage('../content/female/1.jpg')
-    # write_current_file_names()
-    # add_image_to_storage('../content/female/1.jpg', 'female')
-    # get_current_file_names()
-    # delete_image('../content/female/4.jpg')
-    # print(prompt_continue())
-    # print(get_json_file_data('categories.json')['categories']['female'].keys())
-    # print(prompt_and_get_stats('female', get_json_file_data(
-    #    'categories.json')['categories']['female']))
-    # confirm_stats(prompt_and_get_stats('female', get_json_file_data(
-    #    'categories.json')['categories']['female']))
-    # print(is_input_valid('4', 3))
 
 
 if __name__ == '__main__':
