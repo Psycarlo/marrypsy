@@ -10,6 +10,8 @@ MY_CREDENTIALS = credentials.Certificate(CREDENTIALS_FILE)
 CURRENT_FILE_NAME_FEMALE = 0
 CURRENT_FILE_NAME_MALE = 0
 IMAGES_PATH = '../content'
+CAN_ADD_TO_FIREBASE = False
+CAN_DELETE_IMAGE = False
 
 initialize_app(MY_CREDENTIALS, {'storageBucket': 'marrypsy-34678.appspot.com'})
 
@@ -30,6 +32,7 @@ def get_current_file_names():
 
 
 def sync_file_name(sex):
+    # TODO:
     # Get last file number from firebase and sync if needed
     # To share this script with others, the sync must happen
     pass
@@ -99,6 +102,7 @@ def add_data_to_firebase(img_path, sex, stats):
 
 
 def delete_image(img_path):
+    print('Deleting image...')
     remove(img_path)
 
 
@@ -147,6 +151,10 @@ def prompt_and_get_stats(sex, categories={}):
     return res
 
 
+def print_all_images_evaluated(sex):
+    print('All {} images evaluated. Thank you so much!'.format(sex.lower()))
+
+
 def confirm_save_stats(stats):
     clear_terminal()
     print('[ CONFIRMATION ]\n')
@@ -172,8 +180,8 @@ def prompt_start_or_continue(text):
     return True
 
 
-def should_exit_program(bool=True):
-    if bool:
+def should_exit_program(ans=True):
+    if ans:
         write_current_file_names()
         exit(0)
 
@@ -222,9 +230,13 @@ def main():
             confirmed = confirm_save_stats(stats)
             if confirmed == False:
                 was_canceled = True
-        add_data_to_firebase(i_path, chosen_sex, stats)  # TODO: more logic?
-        # TODO: delete image?
+        if CAN_ADD_TO_FIREBASE:
+            add_data_to_firebase(i_path, chosen_sex, stats)
+        if CAN_DELETE_IMAGE:
+            delete_image(i_path)
         should_exit_program(not prompt_start_or_continue('Continue'))
+    print_all_images_evaluated(chosen_sex)
+    should_exit_program()
 
 
 if __name__ == '__main__':
