@@ -1,4 +1,4 @@
-Note: All body stats have the cs - can't see - option
+Note: All body stats but skincolor have the cs - can't see - option
 
 # Female stats
 
@@ -101,6 +101,11 @@ Note: All body stats have the cs - can't see - option
 - other
 
 ## Accessories
+
+### Watch
+
+- yes
+- no
 
 ### Glasses
 

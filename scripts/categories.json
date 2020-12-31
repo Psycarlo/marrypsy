@@ -19,6 +19,7 @@
         "shoes": ["naked", "heels", "boots", "casual", "sports", "other"]
       },
       "accessories": {
+        "watch": ["yes", "no"],
         "glasses": ["yes", "no"],
         "piercings": ["yes", "no"],
         "tattoos": ["yes", "no"],
