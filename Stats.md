@@ -28,6 +28,14 @@ Note: All body stats have the cs - can't see - option
 - short
 - long
 
+### Hair Style
+
+- no
+- straight
+- curly
+- coily
+- other
+
 ### Hair Color
 
 - blonde

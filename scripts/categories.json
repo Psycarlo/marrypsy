@@ -6,6 +6,7 @@
         "bodysize": ["cs", "small", "medium", "large"],
         "bodystructure": ["cs", "fit", "normal", "big"],
         "hairsize": ["cs", "no", "short", "long"],
+        "hairstyle": ["cs", "no", "straight", "curly", "coily", "other"],
         "haircolor": ["cs", "blonde", "brown", "black", "redhead", "mix"],
         "eyecolor": ["cs", "black", "brown", "blue", "green", "other"],
         "legssize": ["cs", "short", "normal", "long"],
