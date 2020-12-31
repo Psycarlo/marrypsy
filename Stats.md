@@ -1,4 +1,4 @@
-Note: All photos must be full body
+Note: All body stats have the cs - can't see - option
 
 # Female stats
 

@@ -3,15 +3,15 @@
     "female": {
       "body": {
         "skincolor": ["fair", "medium", "dark"],
-        "bodysize": ["small", "medium", "large"],
-        "bodystructure": ["fit", "normal", "big"],
-        "hairsize": ["no", "short", "long"],
-        "haircolor": ["blonde", "brown", "black", "redhead", "mix"],
-        "eyecolor": ["black", "brown", "blue", "green", "other"],
-        "legssize": ["short", "normal", "long"],
-        "boobssize": ["small", "normal", "large"],
-        "asssize": ["small", "normal", "large"],
-        "lipssize": ["small", "normal", "large"]
+        "bodysize": ["cs", "small", "medium", "large"],
+        "bodystructure": ["cs", "fit", "normal", "big"],
+        "hairsize": ["cs", "no", "short", "long"],
+        "haircolor": ["cs", "blonde", "brown", "black", "redhead", "mix"],
+        "eyecolor": ["cs", "black", "brown", "blue", "green", "other"],
+        "legssize": ["cs", "short", "normal", "long"],
+        "boobssize": ["cs", "small", "normal", "large"],
+        "asssize": ["cs", "small", "normal", "large"],
+        "lipssize": ["cs", "small", "normal", "large"]
       },
       "outfit": {
         "clothing": ["naked", "casual", "formal", "sports", "lingerie", "beach", "dress", "alternative", "mix", "other"],

@@ -170,6 +170,8 @@ def prompt_start_or_continue(text):
     clear_terminal()
     answer = input('{}? Y/n\n> '.format(text))
     if answer.lower() == 'n':
+        clear_terminal()
+        print('Thanks and see you later!')
         return False
     return True
 
@@ -210,6 +212,10 @@ def main():
     all_images = get_all_folder_images('{}/{}'.format(IMAGES_PATH, chosen_sex))
     for i in all_images:
         show_image('{}/{}/{}'.format(IMAGES_PATH, chosen_sex, i))
+        confirm_stats(prompt_and_get_stats(chosen_sex, get_json_file_data(
+            'categories.json')['categories'][chosen_sex]))
+        should_exit_program(not prompt_start_or_continue('Continue'))
+
     # show_image('../content/female/1.jpg')
     # add_image_to_storage('../content/female/1.jpg')
     # write_current_file_names()
