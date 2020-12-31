@@ -30,6 +30,10 @@ def get_current_file_names():
             s, n = l.strip().split(' ')
             set_current_file_name(s, n)
 
+# TODO: Should we use uuid for photo names instead of current file name/number
+# TODO: This way we can completely ignore the need to know the next file name/number
+# TODO: We just need to verify if the image not already in the storage...
+
 
 def sync_file_name(sex):
     # TODO:
@@ -148,6 +152,7 @@ def prompt_and_get_stats(sex, categories={}):
             clear_terminal()
     res["sex"] = sex
     res["imgName"] = get_current_file_name(sex)
+    # TODO: Add createdAt & updatedAt? Timestamp
     return res
 
 
