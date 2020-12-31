@@ -2,15 +2,14 @@ from os import listdir, remove, system, name
 from os.path import isfile, join
 from PIL import Image
 import json
+import uuid
 
 from firebase_admin import credentials, initialize_app, storage, firestore
 
 CREDENTIALS_FILE = './marrypsy-config.json'
 MY_CREDENTIALS = credentials.Certificate(CREDENTIALS_FILE)
-CURRENT_FILE_NAME_FEMALE = 0
-CURRENT_FILE_NAME_MALE = 0
 IMAGES_PATH = '../content'
-CAN_ADD_TO_FIREBASE = False
+CAN_ADD_TO_FIREBASE = True
 CAN_DELETE_IMAGE = False
 
 initialize_app(MY_CREDENTIALS, {'storageBucket': 'marrypsy-34678.appspot.com'})
@@ -23,65 +22,10 @@ def get_json_file_data(file_path):
         return json.loads(f.read())
 
 
-def get_current_file_names():
-    with open("currentFileName.txt", "r+") as f:
-        lines = f.readlines()
-        for l in lines:
-            s, n = l.strip().split(' ')
-            set_current_file_name(s, n)
-
-# TODO: Should we use uuid for photo names instead of current file name/number
-# TODO: This way we can completely ignore the need to know the next file name/number
-# TODO: We just need to verify if the image not already in the storage...
-
-
-def sync_file_name(sex):
-    # TODO:
-    # Get last file number from firebase and sync if needed
-    # To share this script with others, the sync must happen
-    pass
-
-
-def write_current_file_names():
-    with open("currentFileName.txt", "r+") as f:
-        f.truncate(0)
-        f.write("female {}\n".format(CURRENT_FILE_NAME_FEMALE))
-        f.write("male {}\n".format(CURRENT_FILE_NAME_MALE))
-
-
-def get_current_file_name(sex):
-    global CURRENT_FILE_NAME_FEMALE, CURRENT_FILE_NAME_MALE
-
-    if sex == "female":
-        return CURRENT_FILE_NAME_FEMALE
-    elif sex == "male":
-        return CURRENT_FILE_NAME_MALE
-    return None
-
-
-def set_current_file_name(sex, numb):
-    global CURRENT_FILE_NAME_FEMALE, CURRENT_FILE_NAME_MALE
-
-    if sex == "female":
-        CURRENT_FILE_NAME_FEMALE = numb
-    elif sex == "male":
-        CURRENT_FILE_NAME_MALE = numb
-
-
-def increment_current_file_name(sex):
-    global CURRENT_FILE_NAME_FEMALE, CURRENT_FILE_NAME_MALE
-
-    if sex == "female":
-        CURRENT_FILE_NAME_FEMALE += 1
-    elif sex == "male":
-        CURRENT_FILE_NAME_MALE += 1
-
-
-def add_image_to_storage(img_path, sex):
+def add_image_to_storage(img_path, sex, file_name):
     bucket = storage.bucket()
-    current_file_name = get_current_file_name(sex)
     blob = bucket.blob(
-        '{}/{}'.format(sex, current_file_name))
+        '{}/{}'.format(sex, file_name))
     blob.upload_from_filename(img_path)
     blob.make_public()
 
@@ -90,19 +34,18 @@ def add_stats_to_db(sex, stats):
     global db
 
     # TODO
-    doc_ref = db.collection(u'users').document(u'alovelace')
-    doc_ref.set({
-        u'first': u'Ada',
-        u'last': u'Lovelace',
-        u'born': 1815
-    })
+    # doc_ref = db.collection(u'users').document(u'alovelace')
+    # doc_ref.set({
+    #     u'first': u'Ada',
+    #     u'last': u'Lovelace',
+    #     u'born': 1815
+    # })
 
 
 def add_data_to_firebase(img_path, sex, stats):
     print('Saving data...')
-    add_image_to_storage(img_path, sex)
+    add_image_to_storage(img_path, sex, stats['imgName'])
     add_stats_to_db(sex, stats)
-    increment_current_file_name(sex)
 
 
 def delete_image(img_path):
@@ -150,8 +93,8 @@ def prompt_and_get_stats(sex, categories={}):
             res[outer][inner] = categories[outer][inner][int(
                 user_answer) - 1]
             clear_terminal()
-    res["sex"] = sex
-    res["imgName"] = get_current_file_name(sex)
+    res['sex'] = sex
+    res['imgName'] = str(uuid.uuid4())
     # TODO: Add createdAt & updatedAt? Timestamp
     return res
 
@@ -187,7 +130,6 @@ def prompt_start_or_continue(text):
 
 def should_exit_program(ans=True):
     if ans:
-        write_current_file_names()
         exit(0)
 
 
