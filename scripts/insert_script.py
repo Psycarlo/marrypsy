@@ -3,6 +3,7 @@ from os.path import isfile, join
 from PIL import Image
 import json
 import uuid
+import time
 
 from firebase_admin import credentials, initialize_app, storage, firestore
 
@@ -15,6 +16,9 @@ CAN_DELETE_IMAGE = False
 initialize_app(MY_CREDENTIALS, {'storageBucket': 'marrypsy-34678.appspot.com'})
 
 db = firestore.client()
+
+
+def current_milli_time(): return int(round(time.time() * 1000))
 
 
 def get_json_file_data(file_path):
@@ -33,13 +37,36 @@ def add_image_to_storage(img_path, sex, file_name):
 def add_stats_to_db(sex, stats):
     global db
 
-    # TODO
-    # doc_ref = db.collection(u'users').document(u'alovelace')
-    # doc_ref.set({
-    #     u'first': u'Ada',
-    #     u'last': u'Lovelace',
-    #     u'born': 1815
-    # })
+    doc_ref = db.collection(u'stats').document(
+        u'{}'.format(sex)).collection(u'{}'.format(stats['imgName']))
+
+    body_ref = doc_ref.document(u'body')
+    body_dict = {}
+    for e in stats['body'].keys():
+        body_dict[u'{}'.format(e)] = u'{}'.format(stats['body'][e])
+    body_ref.set(body_dict)
+
+    outfit_ref = doc_ref.document(u'outfit')
+    outfit_dict = {}
+    for e in stats['outfit'].keys():
+        outfit_dict[u'{}'.format(e)] = u'{}'.format(stats['outfit'][e])
+    outfit_ref.set(outfit_dict)
+
+    accessories_ref = doc_ref.document(u'accessories')
+    accessories_dict = {}
+    for e in stats['accessories'].keys():
+        if stats['accessories'][e] == 'yes':
+            accessories_dict[u'{}'.format(e)] = True
+        else:
+            accessories_dict[u'{}'.format(e)] = False
+    accessories_ref.set(accessories_dict)
+
+    details_ref = doc_ref.document(u'details')
+    details_dict = {}
+    details_dict['imgName'] = stats['imgName']
+    details_dict['createdAt'] = stats['createdAt']
+    details_dict['updatedAt'] = stats['updatedAt']
+    details_ref.set(details_dict)
 
 
 def add_data_to_firebase(img_path, sex, stats):
@@ -95,7 +122,9 @@ def prompt_and_get_stats(sex, categories={}):
             clear_terminal()
     res['sex'] = sex
     res['imgName'] = str(uuid.uuid4())
-    # TODO: Add createdAt & updatedAt? Timestamp
+    current_time = current_milli_time()
+    res['createdAt'] = current_time
+    res['updatedAt'] = current_time
     return res
 
 

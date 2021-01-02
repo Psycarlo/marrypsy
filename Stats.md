@@ -81,6 +81,7 @@ Note: All body stats but skincolor have the cs - can't see - option
 ### Clothing
 
 - naked
+- seminaked
 - casual
 - formal
 - sports

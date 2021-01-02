@@ -15,7 +15,7 @@
         "lipssize": ["cs", "small", "normal", "large"]
       },
       "outfit": {
-        "clothing": ["naked", "casual", "formal", "sports", "lingerie", "beach", "dress", "alternative", "mix", "other"],
+        "clothing": ["naked", "seminaked", "casual", "formal", "sports", "lingerie", "beach", "dress", "alternative", "mix", "other"],
         "shoes": ["naked", "heels", "boots", "casual", "sports", "other"]
       },
       "accessories": {
