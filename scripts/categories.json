@@ -1,0 +1,37 @@
+{
+  "categories": {
+    "female": {
+      "body": {
+        "skincolor": ["fair", "medium", "dark"],
+        "bodysize": ["cs", "small", "medium", "large"],
+        "bodystructure": ["cs", "fit", "normal", "big"],
+        "hairsize": ["cs", "no", "short", "long"],
+        "hairstyle": ["cs", "no", "straight", "curly", "coily", "other"],
+        "haircolor": ["cs", "blonde", "brown", "black", "redhead", "mix"],
+        "eyecolor": ["cs", "black", "brown", "blue", "green", "other"],
+        "legssize": ["cs", "short", "normal", "long"],
+        "boobssize": ["cs", "small", "normal", "large"],
+        "asssize": ["cs", "small", "normal", "large"],
+        "lipssize": ["cs", "small", "normal", "large"]
+      },
+      "outfit": {
+        "clothing": ["naked", "seminaked", "casual", "formal", "sports", "lingerie", "beach", "dress", "alternative", "mix", "other"],
+        "shoes": ["naked", "heels", "boots", "casual", "sports", "other"]
+      },
+      "accessories": {
+        "watch": ["yes", "no"],
+        "glasses": ["yes", "no"],
+        "piercings": ["yes", "no"],
+        "tattoos": ["yes", "no"],
+        "earrings": ["yes", "no"],
+        "bracelets": ["yes", "no"],
+        "necklace": ["yes", "no"],
+        "braces": ["yes", "no"],
+        "ring": ["yes", "no"],
+        "handbag": ["yes", "no"],
+        "hat": ["yes", "no"]
+      }
+    },
+    "male": {}
+  }
+}
