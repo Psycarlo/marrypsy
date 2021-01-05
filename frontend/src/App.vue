@@ -1,8 +1,5 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
+  <div id="nav"><router-link to="/">Home</router-link> |</div>
   <!-- eslint-disable-next-line vue/no-multiple-template-root -->
   <router-view />
 </template>
