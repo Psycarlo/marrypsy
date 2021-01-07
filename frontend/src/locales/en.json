@@ -1,0 +1,9 @@
+{
+  "questions": {
+    "eighteen": "Are you 18+?"
+  },
+  "answers": {
+    "yes": "Yes",
+    "no": "No"
+  }
+}

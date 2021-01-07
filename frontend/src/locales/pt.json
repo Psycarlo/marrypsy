@@ -1,0 +1,9 @@
+{
+  "questions": {
+    "eighteen": "Tens mais de 18 anos?"
+  },
+  "answers": {
+    "yes": "Sim",
+    "no": "No"
+  }
+}
