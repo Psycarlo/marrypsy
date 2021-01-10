@@ -2,8 +2,23 @@
   "questions": {
     "eighteen": "Tens mais de 18 anos?"
   },
+  "titles": {
+    "register": "Regista-te",
+    "login": "Inicia sessão"
+  },
+  "labels": {
+    "email": "E-mail",
+    "password": "Palavra-passe",
+    "create-account": "Criar Conta"
+  },
   "answers": {
     "yes": "Sim",
     "no": "No"
+  },
+  "errors": {
+    "no-email": "E-mail é necessário",
+    "invalid-email": "E-mail tem que ser válido",
+    "no-password": "Palavra-passe é necessária",
+    "invalid-password": "Palavra-passe deve conter mais de 5 caracteres"
   }
 }

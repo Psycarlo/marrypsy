@@ -15,3 +15,7 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+$body-font-family: "Montserrat", serif;
+</style>

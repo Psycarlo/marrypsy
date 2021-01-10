@@ -2,8 +2,23 @@
   "questions": {
     "eighteen": "Are you 18+?"
   },
+  "titles": {
+    "register": "Register",
+    "login": "Login"
+  },
+  "labels": {
+    "email": "Email",
+    "password": "Password",
+    "create-account": "Create Account"
+  },
   "answers": {
     "yes": "Yes",
     "no": "No"
+  },
+  "errors": {
+    "no-email": "Email is required",
+    "invalid-email": "Email must be valid",
+    "no-password": "Password is required",
+    "invalid-password": "Password must have at least 6 characters"
   }
 }
