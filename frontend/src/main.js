@@ -4,7 +4,7 @@ import router from "./router";
 import store from "./store";
 import vuetify from "./plugins/vuetify";
 import i18n from "./i18n";
-import { auth } from "../firebase";
+import { auth } from "./firebase";
 
 Vue.config.productionTip = false;
 

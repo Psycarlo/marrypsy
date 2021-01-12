@@ -59,7 +59,10 @@ export default {
     submit() {
       if (this.$refs.form.validate()) {
         this.isLoading = true;
-        // TODO: To refactor
+        this.$store.dispatch("login", {
+          email: this.email,
+          password: this.password
+        });
         this.isLoading = false;
       }
       // TODO: Other stuff

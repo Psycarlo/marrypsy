@@ -53,32 +53,35 @@ export default {
     email: "",
     password: "",
     showPassword: false,
-    isLoading: false,
+    isLoading: false
   }),
   methods: {
     submit() {
       if (this.$refs.form.validate()) {
         this.isLoading = true;
-        // TODO: To refactor
+        this.$store.dispatch("register", {
+          email: this.email,
+          password: this.password
+        });
         this.isLoading = false;
       }
       // TODO: Other stuff
-    },
+    }
   },
   computed: {
     emailRules() {
       return [
-        (v) => !!v || this.$t("errors.no-email"),
-        (v) => /.+@.+/.test(v) || this.$t("errors.invalid-email"),
+        v => !!v || this.$t("errors.no-email"),
+        v => /.+@.+/.test(v) || this.$t("errors.invalid-email")
       ];
     },
     passwordRules() {
       return [
-        (v) => !!v || this.$t("errors.no-password"),
-        (v) => (v && v.length >= 6) || this.$t("errors.invalid-password"),
+        v => !!v || this.$t("errors.no-password"),
+        v => (v && v.length >= 6) || this.$t("errors.invalid-password")
       ];
-    },
-  },
+    }
+  }
 };
 </script>
 
