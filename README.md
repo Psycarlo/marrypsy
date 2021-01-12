@@ -9,6 +9,8 @@
 <p align="center">
   Built with Vue, Vuetify and Firebase
   <br>
+  Python for the scripts
+  <br>
   <br>
   Made with :heart: by Psycarlo
 </p>
@@ -23,6 +25,8 @@ cd frontend
 npm install
 ```
 
+### TODO: Scripts
+
 # Start
 
 ### Frontend: Run using the dev environment (_default port is 8080_):
@@ -30,6 +34,8 @@ npm install
 ```
 npm run serve
 ```
+
+### TODO: Scripts
 
 # Contribute
 
