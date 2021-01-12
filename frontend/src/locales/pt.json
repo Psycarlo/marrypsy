@@ -9,7 +9,8 @@
   "labels": {
     "email": "E-mail",
     "password": "Palavra-passe",
-    "create-account": "Criar Conta"
+    "create-account": "Criar Conta",
+    "login": "Entrar"
   },
   "answers": {
     "yes": "Sim",
