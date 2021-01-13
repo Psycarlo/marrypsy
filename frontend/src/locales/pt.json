@@ -5,7 +5,9 @@
   },
   "titles": {
     "register": "Regista-te",
-    "login": "Inicia sessão"
+    "login": "Inicia sessão",
+    "signin": "Entrar",
+    "signup": "Registar"
   },
   "labels": {
     "email": "E-mail",

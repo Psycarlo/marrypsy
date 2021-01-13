@@ -5,7 +5,9 @@
   },
   "titles": {
     "register": "Register",
-    "login": "Login"
+    "login": "Login",
+    "signin": "Sign In",
+    "signup": "Sign Up"
   },
   "labels": {
     "email": "Email",
