@@ -1,6 +1,7 @@
 {
   "questions": {
-    "eighteen": "Are you 18+?"
+    "eighteen": "Are you 18+?",
+    "interest": "Interested in?"
   },
   "titles": {
     "register": "Register",
@@ -14,7 +15,10 @@
   },
   "answers": {
     "yes": "Yes",
-    "no": "No"
+    "no": "No",
+    "females": "Females",
+    "males": "Males",
+    "both": "Both"
   },
   "errors": {
     "no-email": "Email is required",

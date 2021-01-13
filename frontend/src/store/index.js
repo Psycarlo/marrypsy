@@ -11,7 +11,10 @@ export default new Vuex.Store({
   },
   mutations: {
     setUserProfile(state, val) {
-      state.userProfile = val;
+      state.userProfile = { ...state.userProfile, ...val };
+    },
+    setUserInterest(state, val) {
+      state.userProfile.interest = val;
     }
   },
   actions: {
@@ -30,13 +33,36 @@ export default new Vuex.Store({
         form.password
       );
 
-      dispatch("fetchUserProfile", user);
+      await fb.usersCollection.doc(user.uid).set({
+        interest: null
+      });
+
+      dispatch("getUserInterest", user);
     },
 
     async fetchUserProfile({ commit }, user) {
       const userProfile = await fb.usersCollection.doc(user.uid).get();
 
       commit("setUserProfile", userProfile.data());
+
+      router.push("/main");
+    },
+
+    async getUserInterest({ commit }, user) {
+      const userProfile = await fb.usersCollection.doc(user.uid).get();
+
+      commit("setUserProfile", userProfile.data());
+
+      router.push("/interest");
+    },
+
+    async setUserInterest({ commit }, form) {
+      const user = fb.auth.currentUser;
+      await fb.usersCollection.doc(user.uid).set({
+        interest: form.interest
+      });
+
+      commit("setUserInterest", form.interest);
 
       router.push("/main");
     }

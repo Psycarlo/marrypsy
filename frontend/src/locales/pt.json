@@ -1,6 +1,7 @@
 {
   "questions": {
-    "eighteen": "Tens mais de 18 anos?"
+    "eighteen": "Tens mais de 18 anos?",
+    "interest": "Tens interesse em?"
   },
   "titles": {
     "register": "Regista-te",
@@ -14,7 +15,10 @@
   },
   "answers": {
     "yes": "Sim",
-    "no": "No"
+    "no": "No",
+    "females": "Mulheres",
+    "males": "Homens",
+    "both": "Ambos"
   },
   "errors": {
     "no-email": "E-mail é necessário",

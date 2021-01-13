@@ -65,7 +65,6 @@ export default {
         });
         this.isLoading = false;
       }
-      // TODO: Other stuff
     }
   },
   computed: {
