@@ -7,7 +7,9 @@
     "register": "Regista-te",
     "login": "Inicia sessão",
     "signin": "Entrar",
-    "signup": "Registar"
+    "signup": "Registar",
+    "joinnow": "Entra já",
+    "learnmore": "Aprenda mais"
   },
   "labels": {
     "email": "E-mail",

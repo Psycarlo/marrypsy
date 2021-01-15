@@ -7,7 +7,9 @@
     "register": "Register",
     "login": "Login",
     "signin": "Sign In",
-    "signup": "Sign Up"
+    "signup": "Sign Up",
+    "joinnow": "Join now",
+    "learnmore": "Learn more"
   },
   "labels": {
     "email": "Email",
