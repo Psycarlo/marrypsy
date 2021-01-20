@@ -1,7 +1,12 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import VuexPersist from "vuex-persist";
 import * as fb from "../firebase";
 import router from "../router/index";
+
+const vuexLocal = new VuexPersist({
+  storage: window.localStorage
+});
 
 Vue.use(Vuex);
 
@@ -67,5 +72,6 @@ export default new Vuex.Store({
       router.push("/main");
     }
   },
-  modules: {}
+  modules: {},
+  plugins: [vuexLocal.plugin]
 });
