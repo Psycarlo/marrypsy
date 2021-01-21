@@ -1,5 +1,5 @@
 <template>
-  <h1>Main: You are authenticated</h1>
+  <h1 class="primary--text">[Main: You are authenticated]</h1>
 </template>
 
 <script></script>

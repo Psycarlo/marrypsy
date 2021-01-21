@@ -42,6 +42,14 @@
           </div>
         </v-form>
       </v-col>
+      <p class="primary--text caption mt-8">
+        {{ $t("questions.not-registered") }}
+        <router-link
+          to="/register"
+          style="text-decoration:none; font-weight: bold"
+          >{{ $t("titles.register") }}</router-link
+        >
+      </p>
     </v-row>
   </v-container>
 </template>

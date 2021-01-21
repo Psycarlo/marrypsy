@@ -45,6 +45,10 @@ export default new Vuex.Store({
       dispatch("getUserInterest", user);
     },
 
+    async logout() {
+      // TODO: logout > redirect to home > remove vuex persist
+    },
+
     async fetchUserProfile({ commit }, user) {
       const userProfile = await fb.usersCollection.doc(user.uid).get();
 

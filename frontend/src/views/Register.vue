@@ -42,6 +42,14 @@
           </div>
         </v-form>
       </v-col>
+      <p class="primary--text caption mt-8">
+        {{ $t("questions.already-registered") }}
+        <router-link
+          to="/login"
+          style="text-decoration:none; font-weight: bold"
+          >{{ $t("titles.login") }}</router-link
+        >
+      </p>
     </v-row>
   </v-container>
 </template>

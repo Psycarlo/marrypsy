@@ -1,5 +1,7 @@
 {
   "questions": {
+    "not-registered": "Don't have an account?",
+    "already-registered": "Already have an account?",
     "eighteen": "Are you 18+?",
     "interest": "Interested in?"
   },
