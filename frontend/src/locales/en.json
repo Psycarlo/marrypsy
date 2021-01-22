@@ -17,7 +17,8 @@
     "email": "Email",
     "password": "Password",
     "create-account": "Create Account",
-    "login": "Sign In"
+    "login": "Sign In",
+    "logout": "Sign Out"
   },
   "answers": {
     "yes": "Yes",

@@ -17,7 +17,8 @@
     "email": "E-mail",
     "password": "Palavra-passe",
     "create-account": "Criar Conta",
-    "login": "Entrar"
+    "login": "Entrar",
+    "logout": "Sair"
   },
   "answers": {
     "yes": "Sim",

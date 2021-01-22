@@ -15,6 +15,7 @@
               class="shrink"
               outlined
               required
+              v-on:keyup.enter="submit"
             ></v-text-field>
             <v-text-field
               color="warning"
@@ -27,6 +28,7 @@
               outlined
               @click:append="showPassword = !showPassword"
               required
+              v-on:keyup.enter="submit"
             ></v-text-field>
             <v-btn
               dark

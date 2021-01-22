@@ -46,7 +46,8 @@ export default new Vuex.Store({
     },
 
     async logout() {
-      // TODO: logout > redirect to home > remove vuex persist
+      await fb.auth.signOut();
+      router.replace("/");
     },
 
     async fetchUserProfile({ commit }, user) {

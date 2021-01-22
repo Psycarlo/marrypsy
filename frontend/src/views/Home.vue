@@ -21,11 +21,16 @@
             color="primary"
             text
             min-width="120"
+            @click="navigateLogin"
             >{{ $t("titles.signin") }}</v-btn
           >
-          <v-btn class="ml-2 primary--text" color="warning" min-width="120">{{
-            $t("titles.signup")
-          }}</v-btn>
+          <v-btn
+            class="ml-2 primary--text"
+            color="warning"
+            min-width="120"
+            @click="navigateRegister"
+            >{{ $t("titles.signup") }}</v-btn
+          >
         </v-col>
         <v-col cols="1"></v-col>
       </v-row>
@@ -68,4 +73,15 @@
   </div>
 </template>
 
-<script></script>
+<script>
+export default {
+  methods: {
+    navigateLogin() {
+      this.$router.push("/login");
+    },
+    navigateRegister() {
+      this.$router.push("/register");
+    }
+  }
+};
+</script>
