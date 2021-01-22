@@ -9,25 +9,37 @@ const routes = [
   {
     path: "/",
     name: "Home",
-    component: Home
+    component: Home,
+    meta: {
+      authRedirectToMain: true
+    }
   },
   {
     path: "/eighteen",
     name: "Eighteen",
     component: () =>
-      import(/* webpackChunkName: "eighteen" */ "../views/Eighteen.vue")
+      import(/* webpackChunkName: "eighteen" */ "../views/Eighteen.vue"),
+    meta: {
+      authRedirectToMain: true
+    }
   },
   {
     path: "/register",
     name: "Register",
     component: () =>
-      import(/* webpackChunkName: "register" */ "../views/Register.vue")
+      import(/* webpackChunkName: "register" */ "../views/Register.vue"),
+    meta: {
+      authRedirectToMain: true
+    }
   },
   {
     path: "/login",
     name: "Login",
     component: () =>
-      import(/* webpackChunkName: "login" */ "../views/Login.vue")
+      import(/* webpackChunkName: "login" */ "../views/Login.vue"),
+    meta: {
+      authRedirectToMain: true
+    }
   },
   {
     path: "/interest",
@@ -35,7 +47,8 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "interest" */ "../views/Interest.vue"),
     meta: {
-      requiresAuth: true
+      requiresAuth: true,
+      authRedirectToMain: true
     }
   },
   {
@@ -54,22 +67,32 @@ const router = new VueRouter({
   routes
 });
 
-let redirectMainCounter = 0;
+// let redirectMainCounter = 0;
 
 router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some(x => x.meta.requiresAuth);
-
+  const authRedirectToMain = to.matched.some(x => x.meta.authRedirectToMain);
+  // TODO: Refactor - Something is wrong here
+  // Quando está autenticado && authRedirectToMain : -> main
+  // Requere auth e !auth.currentUser : -> login
+  if (auth.currentUser && authRedirectToMain) {
+    next("/main");
+  }
   if (requiresAuth && !auth.currentUser) {
     next("/login");
-  } else {
-    console.log(from.name);
-    if ((!from.name || from.name === "Home") && redirectMainCounter === 0) {
-      redirectMainCounter++;
-      next("/main");
-      redirectMainCounter = 0;
-    }
-    next();
   }
+  next();
+  // if (requiresAuth && !auth.currentUser) {
+  //   next("/login");
+  // } else {
+  //   console.log(from.name);
+  //   if ((!from.name || from.name === "Home") && redirectMainCounter === 0) {
+  //     redirectMainCounter++;
+  //     next("/main");
+  //     redirectMainCounter = 0;
+  //   }
+  //   next();
+  // }
 });
 
 export default router;
