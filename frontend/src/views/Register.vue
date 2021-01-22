@@ -14,6 +14,7 @@
               v-bind:label="$t('labels.email')"
               class="shrink"
               outlined
+              @click="resetAlert"
               required
             ></v-text-field>
             <v-text-field
@@ -25,9 +26,19 @@
               :type="showPassword ? 'text' : 'password'"
               v-bind:label="$t('labels.password')"
               outlined
+              @click="resetAlert"
               @click:append="showPassword = !showPassword"
               required
             ></v-text-field>
+            <v-alert
+              :value="alert"
+              type="error"
+              color="error"
+              class="primary--text my-2"
+              transition="fade-transition"
+            >
+              {{ errorMsg }}
+            </v-alert>
             <v-btn
               dark
               :disabled="!valid"
@@ -60,17 +71,35 @@ export default {
     valid: true,
     email: "",
     password: "",
+    errorMsg: "",
+    alert: false,
     showPassword: false,
     isLoading: false
   }),
   methods: {
-    submit() {
+    resetAlert() {
+      this.alert = false;
+    },
+    async submit() {
       if (this.$refs.form.validate()) {
         this.isLoading = true;
-        this.$store.dispatch("register", {
-          email: this.email,
-          password: this.password
-        });
+        try {
+          await this.$store.dispatch("register", {
+            email: this.email.toLowerCase(),
+            password: this.password
+          });
+        } catch (error) {
+          this.errorMsg = this.$i18n.t("errors.fb-other-error");
+          switch (error.code) {
+            case "auth/email-already-exists":
+              this.errorMsg = this.$i18n.t("errors.fb-email-already-exists");
+              break;
+            case "auth/email-already-in-use":
+              this.errorMsg = this.$i18n.t("errors.fb-email-already-exists");
+              break;
+          }
+          this.alert = true;
+        }
         this.isLoading = false;
       }
     }

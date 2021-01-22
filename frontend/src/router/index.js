@@ -67,14 +67,10 @@ const router = new VueRouter({
   routes
 });
 
-// let redirectMainCounter = 0;
-
 router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some(x => x.meta.requiresAuth);
   const authRedirectToMain = to.matched.some(x => x.meta.authRedirectToMain);
-  // TODO: Refactor - Something is wrong here
-  // Quando está autenticado && authRedirectToMain : -> main
-  // Requere auth e !auth.currentUser : -> login
+  // TODO: Refactor - When register -> Interest
   if (auth.currentUser && authRedirectToMain) {
     next("/main");
   }
@@ -82,17 +78,6 @@ router.beforeEach((to, from, next) => {
     next("/login");
   }
   next();
-  // if (requiresAuth && !auth.currentUser) {
-  //   next("/login");
-  // } else {
-  //   console.log(from.name);
-  //   if ((!from.name || from.name === "Home") && redirectMainCounter === 0) {
-  //     redirectMainCounter++;
-  //     next("/main");
-  //     redirectMainCounter = 0;
-  //   }
-  //   next();
-  // }
 });
 
 export default router;

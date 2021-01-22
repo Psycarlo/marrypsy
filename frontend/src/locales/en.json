@@ -31,6 +31,11 @@
     "no-email": "Email is required",
     "invalid-email": "Email must be valid",
     "no-password": "Password is required",
-    "invalid-password": "Password must have at least 6 characters"
+    "invalid-password": "Password must have at least 6 characters",
+    "fb-email-already-exists": "The user is already registered. Try Sign In",
+    "fb-wrong-password": "The password is invalid. Check your credentials and try again",
+    "fb-user-not-found": "The user is not registered. Try Sign Up",
+    "fb-too-many-requests": "Account access temporarily disabled due to many unsuccessful login attempts. Try again later",
+    "fb-other-error": "An unexpected error has occurred. Try again in a few seconds"
   }
 }

@@ -31,6 +31,11 @@
     "no-email": "E-mail é necessário",
     "invalid-email": "E-mail tem que ser válido",
     "no-password": "Palavra-passe é necessária",
-    "invalid-password": "Palavra-passe deve conter mais de 5 caracteres"
+    "invalid-password": "Palavra-passe deve conter mais de 5 caracteres",
+    "fb-email-already-exists": "O Utilizador já está registado. Experimenta entrar",
+    "fb-wrong-password": "A palavra-passe está incorreta. Tenta novamente",
+    "fb-user-not-found": "O Utilizador não está registado. Experimenta criar conta",
+    "fb-too-many-requests": "Acesso à conta temporariamente bloqueado devido a muitas tentativas falhadas. Tenta outra vez mais tarde",
+    "fb-other-error": "Aconteceu um erro inesperado. Tenta novamente em alguns segundos"
   }
 }
