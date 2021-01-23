@@ -12,7 +12,8 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    userProfile: {}
+    userProfile: {},
+    isNewUser: true
   },
   mutations: {
     setUserProfile(state, val) {
@@ -20,6 +21,9 @@ export default new Vuex.Store({
     },
     setUserInterest(state, val) {
       state.userProfile.interest = val;
+    },
+    setIsNotNewUser(state) {
+      state.isNewUser = false;
     }
   },
   actions: {

@@ -13,7 +13,17 @@ export default {
   computed: {
     theme() {
       return this.$vuetify.theme.dark ? "dark" : "light";
+    },
+    isNewUser() {
+      return this.$store.state.isNewUser;
     }
+  },
+  created: function() {
+    this.$nextTick(function() {
+      if (this.isNewUser) {
+        this.$router.push("/eighteen");
+      }
+    });
   }
 };
 </script>

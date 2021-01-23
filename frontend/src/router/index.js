@@ -47,8 +47,7 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "interest" */ "../views/Interest.vue"),
     meta: {
-      requiresAuth: true,
-      authRedirectToMain: true
+      requiresAuth: true
     }
   },
   {

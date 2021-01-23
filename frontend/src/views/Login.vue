@@ -90,6 +90,7 @@ export default {
             email: this.email.toLowerCase(),
             password: this.password
           });
+          this.alert = false;
         } catch (error) {
           this.errorMsg = this.$i18n.t("errors.fb-other-error");
           switch (error.code) {
