@@ -15,7 +15,9 @@
 <script>
 export default {
   data: () => ({
-    isLoading: false
+    isLoading: false,
+    queue: [],
+    offset: 0
   }),
   methods: {
     logout() {
@@ -26,3 +28,10 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.vue-tinder {
+  width: 335px;
+  height: 447px;
+}
+</style>
