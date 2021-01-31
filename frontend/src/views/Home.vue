@@ -1,7 +1,6 @@
 <template>
   <div>
-    <v-toolbar color="navigation">
-      <!-- TODO: Refactor : This shit looks ugly af -->
+    <!-- <v-toolbar color="navigation">
       <v-row>
         <v-col cols="1"></v-col>
         <v-col cols="8">
@@ -34,7 +33,28 @@
         </v-col>
         <v-col cols="1"></v-col>
       </v-row>
-    </v-toolbar>
+    </v-toolbar> -->
+    <!-- <v-app-bar color="navigation" dark>
+      <v-toolbar-title class="ml-12">MarryPsy</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <div class="mr-12">
+        <v-btn
+          class="mr-2 primary--text"
+          color="primary"
+          text
+          min-width="120"
+          @click="navigateLogin"
+          >{{ $t("titles.signin") }}</v-btn
+        >
+        <v-btn
+          class="ml-2 primary--text"
+          color="warning"
+          min-width="120"
+          @click="navigateRegister"
+          >{{ $t("titles.signup") }}</v-btn
+        >
+      </div>
+    </v-app-bar> -->
     <v-row>
       <v-col class="col col-4"
         ><h1 class="primary--text">
@@ -42,9 +62,13 @@
           discover your
         </h1>
         <p class="primary--text">ideal partner</p>
-        <v-btn class="ml-2 primary--text" color="warning" min-width="120">{{
-          $t("titles.joinnow")
-        }}</v-btn>
+        <v-btn
+          class="ml-2 primary--text"
+          color="warning"
+          min-width="120"
+          @click="navigateRegister"
+          >{{ $t("titles.joinnow") }}</v-btn
+        >
         <v-btn
           class="mr-2 primary--text text-capitalize"
           color="primary"
